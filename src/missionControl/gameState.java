@@ -6,6 +6,7 @@ public class gameState {bombConfig b;edgework e;ArrayList<String> souvNotes;modu
 	{
 		b = new bombConfig();
 		e = new edgework();
+		e.printEW();
 	}
 	public void bossModules(String s){/*String[]r=s.split(",");for(int i=0;i<r.length;i++);*/}/*incomplete*/
 	public void input(String s) {
