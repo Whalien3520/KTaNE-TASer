@@ -57,6 +57,8 @@ public class bombConfig
 	}
 	private boolean isNum(String i)
 	{
+		if(i.length() == 0)
+			return false;
 		for(int aa = 0; aa < i.length(); aa++)
 		{
 			if("0123456789".indexOf(i.charAt(aa)) < 0)
