@@ -232,7 +232,7 @@ public class edgework {
 		}
 		return removed.size();
 	}
-	
+	public String getSN(){return sn;}
 	public int getNumberSNDigits(){return sndigs.length();}
 	public int getNumberSNLetters(){return snlets.length();}
 	public int getSNDigit(int pos) {return Character.getNumericValue(sndigs.charAt(pos));}
