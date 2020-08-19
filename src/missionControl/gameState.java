@@ -19,5 +19,7 @@ public class gameState {bombConfig b;edgework e;ArrayList<String> souvNotes;modu
 		}
 		else identifyModule(s);
 	}
-	public void identifyModule(String s){if(s.equalsIgnoreCase("Simon Stores"))current=new simonStores(b,e);}
+	public void identifyModule(String s){
+		if(s.equalsIgnoreCase("Simon Stores"))current=new simonStores(b,e);
+		if(s.equalsIgnoreCase("Black Hole"))current=new blackHole(b,e);}
 }
