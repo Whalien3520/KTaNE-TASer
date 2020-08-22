@@ -7,6 +7,7 @@ public class gameState {bombConfig b;edgework e;ArrayList<String> souvNotes;modu
 	{
 		b = new bombConfig();
 		e = new edgework();
+		bossModuleManager bmm=new bossModuleManager(b,e);
 		e.printEW();
 		System.out.println("Please enter the first module");
 	}
