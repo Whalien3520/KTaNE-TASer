@@ -1,7 +1,7 @@
 package abstraction;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
-
+import java.awt.Dimension;
 import javax.swing.*;
 public class edgework {
 	int b, bh, ba, bd;
@@ -11,6 +11,7 @@ public class edgework {
 	int tf, dom;
 	public edgework()
 	{
+		UIManager.put("OptionPane.minimumSize",new Dimension(800,600)); 
 		String input = JOptionPane.showInputDialog("Enter the number of B/BH:");
 		boolean v = validBat(input);
 		while(!(v))

@@ -1,12 +1,16 @@
 package abstraction;
 
+import java.awt.Dimension;
+
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 public class bombConfig 
 {
 	private int solvables, needies, min, sec;
 	public bombConfig()
 	{
+		UIManager.put("OptionPane.minimumSize",new Dimension(800,600));
 		String input = JOptionPane.showInputDialog("Enter the number of solvable modules:");
 		boolean v = isNum(input);
 		while(!(v))
