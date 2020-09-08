@@ -1,8 +1,10 @@
 package abstraction;
 
 import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 public class bombConfig 
@@ -11,6 +13,7 @@ public class bombConfig
 	public bombConfig()
 	{
 		UIManager.put("OptionPane.minimumSize",new Dimension(800,600));
+		UIManager.put("OptionPane.messageFont", new Font("Arial",Font.BOLD, 32));
 		String input = JOptionPane.showInputDialog("Enter the number of solvable modules:");
 		boolean v = isNum(input);
 		while(!(v))
