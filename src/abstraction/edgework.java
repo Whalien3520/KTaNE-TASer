@@ -122,6 +122,8 @@ public class edgework {
 	public boolean hasInd(String s){return (hasLit(s) || hasUnlit(s));}
 	public String getLit() {return lit.toString();}
 	public String getUnlit() {return unlit.toString();}
+	public int getNumberLit() {return lit.size();}
+	public int getNumberUnlit() {return unlit.size();}
 	
 	public String[][] getPorts(){return pp;};
 	public int findPort(String p) {

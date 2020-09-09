@@ -3,7 +3,7 @@ import abstraction.*;
 public class simonStores extends module{
 	private int D;private int[]a,b,c;private final String p="RGB",s="YCM";private final String h="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	private final String[][]l={{"R","G","B","C","M","Y"},{"Y","B","G","M","C","R"},{"B","M","R","Y","G","C"}}; private String[]f;private boolean rotated;
-	public simonStores(bombConfig bombconfig, edgework edgework){String x=edgework.getSN();
+	public simonStores(bombConfig bombconfig, edgework edgework){setBombConfig(bombconfig);setEdgework(edgework);String x=edgework.getSN();
 	a=new int[6];b=new int[6];c=new int[6];f=new String[5];for(int i=0;i<5;i++)f[i]="";
 	D=0;for (int i=0;i<6;i++)D+=h.indexOf(x.substring(i,i+1));D=D%365;
 	for(int i=1;i<a.length;i++)a[i]=-366;for(int i=1;i<b.length;i++)b[i]=-366;for(int i=1;i<c.length;i++)c[i]=-366;

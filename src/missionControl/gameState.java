@@ -7,14 +7,17 @@ public class gameState {bombConfig b;edgework e;ArrayList<String> souvNotes;modu
 	{
 		b = new bombConfig();
 		e = new edgework();
-		bossModuleManager bmm=new bossModuleManager(b,e);
+		bossManager=new bossModuleManager(b,e);
 		e.printEW();
 		System.out.println("Please enter the first module");
 	}
 	public void bossModules(String s){/*String[]r=s.split(",");for(int i=0;i<r.length;i++);*/}/*incomplete*/
 	public void input(String s) {
 		/*if(bossManager.needInput()){}
-		else*/ if(current!=null) {
+		else*/
+		if(s.equals("bossInput"))bossManager.input();
+		else if(s.equals("bossOutput"))bossManager.output();
+		else if(current!=null) {
 			if(current.isSolved()){current=null;identifyModule(s);}
 			else current.input(s);
 		}

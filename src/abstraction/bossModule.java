@@ -1,9 +1,8 @@
 package abstraction;
 
 public abstract class bossModule extends module{
-	int d;
-	public bossModule(int i, int s){d=i;}
-	abstract String name();
-	abstract void stage(String s);
-	abstract String output();
+	private String name;
+	protected void setName(String s){name=s;}
+	public String name() {return name;}
+	public abstract void output();
 }
