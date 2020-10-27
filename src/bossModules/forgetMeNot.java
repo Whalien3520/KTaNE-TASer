@@ -6,7 +6,7 @@ public class forgetMeNot extends bossModule{
 	public forgetMeNot(bombConfig b, edgework e, String n) {
 		setBombConfig(b);setEdgework(e);setName(n);r=new int[3][b.getNumberSolvables()];
 	}
-	public void input(String s) {r[0][index++]=Integer.parseInt(s);}
+	public boolean input(String s) {if(!valid(s))return false;r[0][index++]=Integer.parseInt(s);return true;}
 	public void output() {
 		if(e.hasUnlit("CAR"))r[1][0]=2;
 		else if(e.getNumberLit()<e.getNumberUnlit())r[1][0]=7;
@@ -35,5 +35,9 @@ public class forgetMeNot extends bossModule{
 			r[2][i]=(r[0][i]+r[1][i])%10;
 		}
 		for(int t:r[2])System.out.print(t);
+	}
+	public boolean valid(String s) {
+		try {Integer.parseInt(s);}catch(NumberFormatException e){return false;}
+		return s.length()==1;
 	}
 }

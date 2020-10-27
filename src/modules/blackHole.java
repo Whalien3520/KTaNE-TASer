@@ -5,9 +5,10 @@ public class blackHole extends module{
 	private int[]c=new int[4];
 	public blackHole(bombConfig b, edgework e) {setBombConfig(b);setEdgework(e);
 		c[0]=e.getSNCharacter(2)-48;c[1]=e.getSNCharacter(5)-48;c[2]=e.getNumberPorts();
-		System.out.println("Please enter number of digits to input.");
+		System.out.print("Please enter number of digits to input: ");
 	}
-	public void input(String s){
+	public boolean input(String s){
+		if(!valid(s)){System.out.print("Please enter a valid number: ");return false;}
 		for (int i=0;i<Integer.parseInt(s);i++){
 			c[3]=t[c[0]][c[1]];
 			switch (c[2]%8){
@@ -44,4 +45,7 @@ public class blackHole extends module{
 					c[3]+=t[c[0]][c[1]];
 				}c[1]--;c[0]--;if(c[1]<0)c[1]=9;if(c[0]<0)c[0]=9;break;
 			}
-			System.out.print(c[3]%5);c[2]++;}System.out.println();setSolved();}}
+			System.out.print(c[3]%5);c[2]++;}System.out.println();setSolved();return true;}
+	protected boolean valid(String s){
+		try {Integer.parseInt(s);return true;}
+		catch(final NumberFormatException e) {return false;}}}

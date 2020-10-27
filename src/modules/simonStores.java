@@ -1,4 +1,6 @@
 package modules;
+import java.util.Arrays;
+
 import abstraction.*;
 public class simonStores extends module{
 	private int D;private int[]a,b,c;private final String p="RGB",s="YCM";private final String h="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -10,14 +12,14 @@ public class simonStores extends module{
 	a[0]=(h.indexOf(x.substring(2,3))*36+h.indexOf(x.substring(3,4)))%365;a[4]=0;a[5]=0;
 	b[0]=(h.indexOf(x.substring(4,5))*36+h.indexOf(x.substring(5)))%365;b[5]=0;
 	c[0]=(h.indexOf(x.substring(0,1))*36+h.indexOf(x.substring(1,2)))%365;
-	System.out.println("Please enter button colors starting from NE going clockwise, no spaces.");}
+	System.out.println("Please enter button colors as capital letters starting from NE going clockwise, no spaces.");}
 	/*public simonStores(String[]x){a=new int[6];b=new int[6];c=new int[6];f=new String[5];for(int i=0;i<5;i++)f[i]="";
 		D=0;for (int i=0;i<6;i++)D+=h.indexOf(x[0].substring(i,i+1));D=D%365;
 		a[0]=(h.indexOf(x[0].substring(2,3))*36+h.indexOf(x[0].substring(3,4)))%365;a[4]=0;a[5]=0;
 		b[0]=(h.indexOf(x[0].substring(4,5))*36+h.indexOf(x[0].substring(5)))%365;b[5]=0;
 		c[0]=(h.indexOf(x[0].substring(0,1))*36+h.indexOf(x[0].substring(1,2)))%365;l(x[1]);}*/
-	public void input(String s){
-		if(!rotated){l(s);rotated=true;System.out.println("Please enter first stage, with each set of flashes separated by a space.");return;}
+	public boolean input(String s){
+		if(!rotated){l(s);rotated=true;System.out.println("Please enter first stage, with each set of flashes separated by a space.");return false;}
 		if(f[0].equals("")){f[0]=s.split(" ")[0];f[1]=s.split(" ")[1];f[2]=s.split(" ")[2];
 			for(int i=1;i<4;i++) {
 				switch(f[i-1].length()){
@@ -36,7 +38,23 @@ public class simonStores extends module{
 				case 1:c[i]=o(c[i-1],i,"c",f[i-1]);break;
 				case 2:c[i]=t(i,"c",f[i-1]);break;
 				case 3:c[i]=h(i,"c",f[i-1]);}}}
-		System.out.println(press());}
+		System.out.println(press());return true;}
+	protected boolean valid(String s) {
+		if(!rotated){
+			if(s.length()!=8)return false;
+			char[]n=s.toCharArray();Arrays.sort(n);char[]p={'B','C','G','K','M','R','W','Y'};
+			for(int i=0;i<8;i++)if(n[i]!=p[i])return false;}
+		else if(f[0].equals("")){
+			String[]r=s.split(" ");
+		}
+		else if(f[3].equals("")) {
+			
+		}
+		else {
+			
+		}
+		return true;
+	}
 	private String press(){
 		String ret="";
 		if(b[4]==-366){String t=b(a[3]);

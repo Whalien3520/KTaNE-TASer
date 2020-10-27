@@ -17,6 +17,6 @@ public class bossModuleManager {
 		}
 	}
 	private forgetMeNot makeFMN(int i) {return new forgetMeNot(b,e,String.format("Forget Me Not #%d",i));}
-	public void input() {for(int i=0;i<bossMods.size();i++)bossMods.get(i).input(JOptionPane.showInputDialog("Enter stage for "+bossMods.get(i).name()));}
+	public void input() {for(int i=0;i<bossMods.size();i++)if(!bossMods.get(i).input(JOptionPane.showInputDialog("Enter stage for "+bossMods.get(i).name())))i--;}
 	public void output() {for(bossModule b:bossMods)b.output();}
 }

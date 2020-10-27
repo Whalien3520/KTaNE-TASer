@@ -22,12 +22,13 @@ public class gameState {bombConfig b;edgework e;ArrayList<String> souvNotes;modu
 				+"then turn all left-side keys in ascending number order.");
 		else if(s.equals("bossOutput"))bossManager.output();
 		else if(current!=null) {
-			if(current.isSolved()){current=null;identifyModule(s);}
+			if(current.isSolved()){identifyModule(s);}
 			else current.input(s);
 		}
 		else identifyModule(s);
 	}
 	public void identifyModule(String s){
 		if(s.equalsIgnoreCase("Simon Stores"))current=new simonStores(b,e);
-		if(s.equalsIgnoreCase("Black Hole"))current=new blackHole(b,e);}
+		if(s.equalsIgnoreCase("Black Hole"))current=new blackHole(b,e);
+		if(s.equalsIgnoreCase("Simon Says"))current=new simonSays(b,e);}
 }
