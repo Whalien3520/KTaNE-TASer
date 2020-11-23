@@ -1,5 +1,6 @@
 package modules;
 import java.util.Arrays;
+import java.util.ArrayList;
 
 import abstraction.*;
 public class simonStores extends module{
@@ -18,8 +19,8 @@ public class simonStores extends module{
 		a[0]=(h.indexOf(x[0].substring(2,3))*36+h.indexOf(x[0].substring(3,4)))%365;a[4]=0;a[5]=0;
 		b[0]=(h.indexOf(x[0].substring(4,5))*36+h.indexOf(x[0].substring(5)))%365;b[5]=0;
 		c[0]=(h.indexOf(x[0].substring(0,1))*36+h.indexOf(x[0].substring(1,2)))%365;l(x[1]);}*/
-	public boolean input(String s){
-		if(!rotated){l(s);rotated=true;System.out.println("Please enter first stage, with each set of flashes separated by a space.");return false;}
+	public boolean input(String s){if(!valid(s))return false;
+		if(!rotated){l(s);rotated=true;System.out.println("Please enter first stage, with each set of flashes separated by a space.");return true;}
 		if(f[0].equals("")){f[0]=s.split(" ")[0];f[1]=s.split(" ")[1];f[2]=s.split(" ")[2];
 			for(int i=1;i<4;i++) {
 				switch(f[i-1].length()){
@@ -42,16 +43,42 @@ public class simonStores extends module{
 	protected boolean valid(String s) {
 		if(!rotated){
 			if(s.length()!=8)return false;
-			char[]n=s.toCharArray();Arrays.sort(n);char[]p={'B','C','G','K','M','R','W','Y'};
+			char[]n=s.toCharArray();Arrays.sort(n);char[]p={'B','C','G','M','R','Y'};
 			for(int i=0;i<8;i++)if(n[i]!=p[i])return false;}
 		else if(f[0].equals("")){
-			String[]r=s.split(" ");
+			String[]r=s.split(" ");if(r.length!=3)return false;
+			int[]lens=new int[r.length];for(int i=0;i<lens.length;i++){
+				if(r[i].length()>3) return false;
+				lens[i]=r[i].length();
+				for(int j=0;j<i;j++)if(j==i&&(j==2||j==3))return false;}
+			ArrayList<Character>t=new ArrayList<Character>(Arrays.asList('B','C','G','M','R','Y'));
+			for(String g:r)for(int i=0;i<g.length();i++){
+				if(!t.contains(g.charAt(i)))return false;
+				for(int j=0;j<i;j++)if(g.charAt(i)==g.charAt(j))return false;}
 		}
-		else if(f[3].equals("")) {
-			
+		else if(f[3].equals("")){
+			String[]e=s.split(" ");if(e.length!=1)return false;
+			String[]r=new String[4];for(int i=0;i<3;i++)r[i]=f[i];r[3]=e[0];
+			int[]lens=new int[r.length];for(int i=0;i<lens.length;i++){
+				if(r[i].length()>3) return false;
+				lens[i]=r[i].length();
+				for(int j=0;j<i;j++)if(j==i&&(j==2||j==3))return false;}
+			ArrayList<Character>t=new ArrayList<Character>(Arrays.asList('B','C','G','M','R','Y'));
+			for(String g:r)for(int i=0;i<g.length();i++){
+				if(!t.contains(g.charAt(i)))return false;
+				for(int j=0;j<i;j++)if(g.charAt(i)==g.charAt(j))return false;}
 		}
 		else {
-			
+			String[]e=s.split(" ");if(e.length!=1)return false;
+			String[]r=new String[4];for(int i=0;i<4;i++)r[i]=f[i];r[4]=e[0];
+			int[]lens=new int[r.length];for(int i=0;i<lens.length;i++){
+				if(r[i].length()>3) return false;
+				lens[i]=r[i].length();
+				for(int j=0;j<i;j++)if(j==i&&(j==2||j==3))return false;}
+			ArrayList<Character>t=new ArrayList<Character>(Arrays.asList('B','C','G','M','R','Y'));
+			for(String g:r)for(int i=0;i<g.length();i++){
+				if(!t.contains(g.charAt(i)))return false;
+				for(int j=0;j<i;j++)if(g.charAt(i)==g.charAt(j))return false;}
 		}
 		return true;
 	}
